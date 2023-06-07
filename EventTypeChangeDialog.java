@@ -1,4 +1,4 @@
-﻿package cn.com.agree.ide.abf.event;
+package cn.com.agree.ide.abf.event;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -376,6 +376,13 @@ public class EventTypeChangeDialog extends EventDialog {
 		flowValue = textClearTool.getFilterText();
 		flowValue.setText(clonedEvent.getValue());
 		
+		flowValue.addPaintListener(e -> {
+		    GC gc = e.gc;
+		    // 设置画笔颜色为红色
+		    gc.setForeground(container.getDisplay().getSystemColor(SWT.COLOR_RED));
+		    // 绘制一条从 (10, 10) 到 (50, 50) 的直线
+		    gc.drawLine(10, 10, 50, 50);
+		});
 		// 检测存在性
 		UIStyleUtil.checkTextPathExistAndMark(flowValue);
 		// 清理Label
